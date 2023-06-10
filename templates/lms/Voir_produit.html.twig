@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}produits{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>A propos du formation</h1>
+</div>
+{% endblock %}
+{% block body %}
+    <article>
+        <div class="content">
+            <h2>{{Matiere.NomMat}}</h2>
+            <p>Cette formation a ete creer le {{Matiere.CreatedAt|date('d/m/y')}}.Elle est dans la categorie {{Matiere.Categorie.NomCat}}.</br>
+              Cet matiere est enseigner par {{Matiere.Enseigner.Nom}} {{Matiere.Enseigner.Prenom}}</p>
+            <img src="/uploads/{{Matiere.ImgMat}}" alt="" width="320" height="240">
+            <h2>{{Matiere.PrixMat}} ar</h2>
+            <p>{{Matiere.DetailMat}}</p>
+            <a class="btn btn-success" href="{{path("ajout_prod",{id: Matiere.Id})}}">Acheter</a>
+        </div>
+  </article>
+{% endblock %}

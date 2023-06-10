@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/registre.css')}}">
+{% endblock %}
+{% block body %}
+<div class="raw">
+    <h1 class="text-center mt-4 mb-3">Inscription</h1>
+</br></br>
+<div class="row">
+    <div class="col-md-5 mx-auto">            
+            {{ form_start(formInscription) }}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form_row(formInscription.Nom) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form_row(formInscription.Prenom) }}
+                    </div>
+                </div>
+                {{ form_row(formInscription.email) }}
+                
+                {{ form_row(formInscription.Adresse) }}
+                <div class="form-row">
+                    <div class="form-group col-md-6">     
+                        {{ form_row(formInscription.sexe) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form_row(formInscription.DateDeNaissance) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form_row(formInscription.image) }}
+                    </div>
+                </div>
+    </div>    
+    <div class="col-md-5 mx-auto">            
+                {{ form_row(formInscription.Role, {
+                    label:'Vous etes:'}) }}
+                {{ form_row(formInscription.plainPassword, {
+                    label: 'Mot de passe'
+                }) }}
+                {{ form_row(formInscription.Confirmation, {
+                    label: 'Confirmer votre Mot de passe'
+                }) }}
+                {{ form_row(formInscription.agreeTerms) }}
+
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            {{ form_end(formInscription) }}
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

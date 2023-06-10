@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}produits{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>Ceci est votre facture d'achat:</h1>
+</div>
+{% endblock %}
+{% block body %}
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Formation</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {%for element in dataPanier%}
+              <tr> 
+                <th scope="row">{{element.matiere.NomMat}}</th>
+                <td>{{element.matiere.PrixMat}} ar</td>
+                <td><a href="{{path("suppr_prod", {id: element.matiere.Id})}}" class="btn btn-danger">x</a></td>
+              </tr>
+            {% else %}
+              <tr><td>Votre panier est vide</td></tr>
+            {% endfor %}
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+              total
+            </td>
+            <td>
+              {{total}}
+            </td>
+            <td>
+              <a href="{{path("supAll_prod")}}" class="btn btn-danger">Tout supprimer</a>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <a href="{{path('app_validation')}}" class="btn btn-outline-warning">Valider votre commande!</a>
+{% endblock %}

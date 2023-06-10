@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau produit{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>Envoyer votre fichier</h1>
+</div>
+{% endblock %}
+{% block body %}
+<article>
+  <div class="content">
+      <h2>{{user.Nom}}</h2>     
+      <h2>{{matiere.NomMat}}</h2>
+  </div>
+</article>
+  <h2>Publication d'une nouvelle video:</h2>
+  <p><i>Veuillez choisir des fichier video inferieur a 40Mo!!!</i></p>
+  {{form_start(formFichier)}}
+        <div class="form-group">
+        {{form_widget(formFichier.nomFichier,{'attr':{'class':"form-control"}})}}
+        </div>
+        <div class="form-group">
+               {{form_widget(formFichier.fichier,{'attr':{'class':"form-control"}})}}
+          </div>
+        <button type="submit" class="btn btn-primary">
+          publier
+        </button>
+  {{form_end(formFichier)}}
+<div class="row row-cols-1 row-cols-md-3">
+  {%for fichier in matiere.fichiers%}    
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">        
+                    <video width="320" height="240" controls>
+                        <source src="/uploads/{{fichier.fichier}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                    </video> 
+                </div>
+                <div class="card-footer">
+                    <form method="POST" action="{{path("app_videoEnseignant",{id:fichier.Id})}}" style="display:inline-block">
+                        <input type="hidden" name="_token" value="{{csrf_token('fichier' ~ fichier.Id)}}">
+                        <input type="hidden" name="_method" value="fichier">
+                        <button class="btn btn-sm btn-outline-danger vid">{{fichier.nomFichier}}</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

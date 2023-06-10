@@ -1,0 +1,8 @@
+liip_imagine:
+    driver: "gd"
+    filter_sets:
+        squared_thumbnail_medium:
+            filters:
+                thumbnail:
+                    size: [400, 400]
+                    mode: outbond

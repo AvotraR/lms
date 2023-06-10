@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{asset("css/bootstrap.css")}}">
+        <link rel="stylesheet" type="text/css" href="{{asset("css/css.css")}}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}     
+        {% endblock %}
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <div class="side-menu">
+            <div class="side-name">
+                <h1 class="text-center">ADMIN</h1>
+            </div>
+            <ul>
+                <li class="nav-item"><a class="nav-link" href="{{ path('app_admin')}}">Administrateur</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('app_lms')}}">Acceuil</a></li>
+                <li class="nav-item">Enseignant</li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('liste_etudiant')}}">Listes des etudiants</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('liste_enseignant')}}">Listes des Enseignants</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('liste_formation')}}">Listes des Formations</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('Nouveau_produit')}}">Creation de nouvelle formation</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('Cat_produit')}}">Les categories</a></li>
+                <li class="nav-item">Cours</li>
+            </ul>
+        </div>
+        <div class="container container-dash ">
+                <div class="content-dash">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+        </div>
+    </body>
+</html>

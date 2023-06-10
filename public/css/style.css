@@ -1,0 +1,21 @@
+header{
+    background-image:url('../img/lo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:100%;
+    height:100vh;
+    min-height: 375px;
+}
+.lms-header{
+    margin-top: 90px;
+}
+.lms-title{
+    font-size: 90px;
+    color:white;
+}
+.gratuit{
+    border: 2px solid none;
+    border-radius: 20px;
+    color:white;
+    padding:10px;
+}

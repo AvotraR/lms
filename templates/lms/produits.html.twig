@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}produits{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>Nos Formations</h1>
+</div>
+{% endblock %}
+{% block body %}
+    <br>
+    <section class="produit">
+    <div class="container-fluid">
+        <div class="row">     
+                <div class="col-lg-3 mt-4 pt-2 mt-lg-0 pt-lg-0">
+                    <h2>Recherche</h2></br>
+                    <div class="sidebar">
+                        {{form_start(form)}}
+                        <div class="widget">
+                            {{form_row(form.Categorie)}}
+                        </div>
+                        <div class="widget">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{form_row(form.PrixMin)}}
+                                </div>
+                                <div class="col-md-6">
+                                    {{form_row(form.PrixMax)}}
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">chercher</button>
+                        {{form_end(form)}}
+                    </div>
+                </div>
+                <div class="col-12 col-md-9">
+                    <div class="row row-cols-1 row-cols-md-4">
+                        {%for Matiere in Matieres%} 
+                        <div class="col-md-3 col-sm-6 my-3">
+                            <div class="card shadow">
+                                     <div>
+                                        <img src="{{ asset('uploads/' ~ Matiere.ImgMat)}}" width="120" height="120" class="img-fluid card-img-top">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5>{{Matiere.NomMat}}</h5>
+                                        <h5>
+                                            <span class ="price">{{Matiere.PrixMat}} ar</span>
+                                        </h5>
+                                        <a class="btn btn-success" href="{{ path('Voir_produit', {'id' : Matiere.id})}}" >A propos</a>
+                                    </div>
+                                </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+    </div>
+    </section>
+{% endblock %}

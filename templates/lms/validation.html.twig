@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}produits{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>{{user.Nom}} {{user.Prenom}} Votre commande:</h1>
+</div>
+{% endblock %}
+{% block body %}
+   
+   <div class="content-dash row row-cols-1 row-cols-md-4">
+        {%for commande in dataPanier%}
+            <div class="col mb-3">
+                <div class="card">
+                        <i></i>
+                    <div class="card-body">
+                        <h5 class="card-title">{{commande.matiere.NomMat}}</h5>
+                        <p class="card-text">Prix {{commande.matiere.PrixMat}}ar</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Prix total :{{total}}ar</h2>
+    <div class="card-footer bg-transparent border-black">
+        <a href="{{path('app_payer')}}" class="btn btn-primary">Payer</a></div>
+    </div>
+{% endblock %}

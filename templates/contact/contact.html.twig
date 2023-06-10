@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>Contact</h1>
+</div>
+{% endblock %}
+{% block body %}
+    <section class="section1" id="about">
+        <div class="container">
+            <div class="row justify-content-center">
+            <div class="col-md-5 mx-auto">
+                    <img src="uploads/pexels-snapwire-618613.jpg" class="img1 img-fluid "alt="">
+                </div>
+                <div class="col-md-6 mx-auto">
+                    {{form_start(formContact)}}
+                            <div class="form-group">
+                                <label for="">Nom:</label>
+                            {{form_widget(formContact.Nom,{'attr':{'class':"form-control"}})}}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Prenom:</label>
+                                {{form_widget(formContact.Prenom,{'attr':{'class':"form-control"}})}}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Numero:</label>
+                                {{form_widget(formContact.Numero,{'attr':{'class':"form-control"}})}}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email:</label>
+                                {{form_widget(formContact.Email,{'attr':{'class':"form-control"}})}}
+                            </div>
+                            <button type="submit" class="btn btn-outline-primary">
+                            Envoyer
+                            </button>
+                    {{form_end(formContact)}}
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+{% endblock %}
+

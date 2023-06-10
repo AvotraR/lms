@@ -1,0 +1,87 @@
+{% extends 'base2.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/css.css')}}">
+{% endblock %}
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <h1>Voici les statistics</h1>
+    <div class="content-dash row row-cols-1 row-cols-md-4">
+            <div class="col mb-3">
+                <div class="card">
+                        <i></i>
+                    <div class="card-body">
+                        <h1>{{fich|length}}</h1>
+                        <h5 class="card-title">Nombre de fichier</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                        <i></i>
+                    <div class="card-body">
+                        <h1>{{matiere|length}}</h1>
+                        <h5 class="card-title">Nombre de formation</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                        <i></i>
+                    <div class="card-body">
+                        <h1>{{etudiant|length}}</h1>
+                        <h5 class="card-title">Nombre d'etudiant</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                        <i></i>
+                    <div class="card-body">
+                        <h1>{{prof|length}}</h1>
+                        <h5 class="card-title">Nombre de professeur</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                        <i></i>
+                    <div class="card-body">
+                        <h1>{{factures|length}}</h1>
+                        <h5 class="card-title">Formation acheter</h5>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <h1 class="text-center">Liste des personne qui ont payer des formations</h1>
+    <div class="table-new d-flex">
+        <div class="table-new-payement">
+            <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Matiere</th>
+                        <th scope="col">Prix payer</th>
+                        <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for facture in factures%}
+                                <tr>
+                                    <th scope="row">{{facture.Id}}</th>
+                                    <td>{{facture.achat.Email}}</td>
+                                    <td>{{facture.matiere.nomMat}}</td>
+                                    <td>{{facture.prixTo}}</td>
+                                   <td>
+                                        <form method="POST" action="{{path('achat_delete',{'id': facture.Id})}}" style="display:inline-block" onsubmit="return confirm('Etes vous certain de vouloir supprimer cette utilisateur!')">
+                                            <input type="hidden" name="_token" value="{{csrf_token('delete' ~ facture.Id)}}">
+                                            <input type="hidden" name="_method" value="delete">
+                                            <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+                                        </form></td>
+                                </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+{% endblock %}

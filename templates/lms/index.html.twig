@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+{% endblock %}
+{% block title %}Hello LmsController!{% endblock %}
+{%block header%}
+    <header>
+        <div class="text-center lms-text-container">
+            <div class="lms-inner">
+                <h1 class="lms-title">E-Learning</h1>
+                <p class="tm-hero-subtitle">
+                  Ceci est une site d'apprentissage 
+                  <br />en ligne
+                </p>
+                <a href="{{ path('app_register')}}" class="gratuit btn btn-warning">Inscription gratuit</a>
+            </div>        
+        </div>
+    </header>
+{%endblock%}
+{% block body %}
+{% endblock %}

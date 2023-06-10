@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EnseignantController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>Enseigner</h1>
+</div>
+{% endblock %}
+{% block body %}
+<div class="row row-cols-1 row-cols-md-3">
+    {%for Matieres in Matiere%}
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Votre formation en {{Matieres.NomMat}}</h5>
+                    <form method="POST" action="{{path("enseignant_fichier",{id:Matieres.Id})}}" style="display:inline-block">
+                        <input type="hidden" name="_token" value="{{csrf_token('matiere' ~ Matieres.Id)}}">
+                        <input type="hidden" name="_method" value="matiere">
+                        <button class="btn btn-sm btn-outline-danger">{{Matieres.NomMat}}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+  </div>
+<a href="https://meet.google.com/">GOOGLE MEET</a>
+{% endblock %}

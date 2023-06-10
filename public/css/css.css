@@ -1,0 +1,67 @@
+.lms-text-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+  
+.lms-inner {
+    margin-top: -90px;
+}
+.lms-title {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 2px #333;
+}
+.side-menu ul{
+    padding: 0;
+    margin:0;  
+}
+.side-menu ul li{
+    list-style: none;
+    padding: 0;
+    margin:0;
+}
+.side-menu ul li a{
+    font-size: 15px;
+}
+.side-menu h1{
+color:#fff;
+font-size:20px;
+}
+.side-menu{
+position:fixed;
+background-color: #111;
+width:10vw;
+min-height:100vh;
+display:flex;
+flex-direction: column;
+}
+.side-name h1{
+font-size: 10px;
+margin-top: 10px;
+}
+.container-dash{
+position:absolute;
+right:10px;
+width:100vw;
+display:flex;
+align-items: center;
+justify-content:center;
+flex-direction: column;
+
+}
+.container-dash .content-dash{
+position:relative;
+margin-top:30px;
+width:100%;
+}
+.table-new{
+margin-top:40px;
+width:100%;
+display:flex;
+justify-content: space-around;
+}
+a{
+    color:rgb(255, 255, 255);
+}

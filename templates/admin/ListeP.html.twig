@@ -1,0 +1,50 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Liste des Professeurs{% endblock %}
+
+{% block body %}
+<div class="table-new d-flex">
+    <div class="table-new-payement">
+        <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Sexe</th>
+                    <th scope="col">Date de naissance</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Matiere enseigner</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for Etudiant in Etudiants%}
+                            <tr>
+                                <th scope="row">{{Etudiant.Id}}</th>
+                                <td>{{Etudiant.Nom}}</td>
+                                <td>{{Etudiant.Prenom}}</td>
+                                <td>{{Etudiant.Email}}</td>
+                                <td>{{Etudiant.Sexe}}</td>
+                                <td>{{Etudiant.DateDeNaissance | date('d/m/Y')}}</td>
+                                <td>{{Etudiant.Adresse}}</td>
+                                <td><ul>
+                                    {%for Matiere in Etudiant.Matieres%}
+                                        <li>{{Matiere.NomMat}}</li>
+                                    {%endfor%}
+                                    </ul>
+                                </td>
+                                <td><a href="{{path('app_mod_etudiant',{'id': Etudiant.Id})}}" class="btn btn-sm btn-outline-info">Modifier</a></td>
+                                <td>
+                                    <form method="POST" action="{{path('user_delete',{'id': Etudiant.Id})}}" style="display:inline-block" onsubmit="return confirm('Etes vous certain de vouloir supprimer cette utilisateur!')">
+                                        <input type="hidden" name="_token" value="{{csrf_token('delete' ~ Etudiant.Id)}}">
+                                        <input type="hidden" name="_method" value="delete">
+                                        <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+                                    </form></td>
+                            </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+{% endblock %}

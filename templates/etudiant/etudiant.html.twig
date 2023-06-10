@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}produits{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset('css/produit.css')}}">
+{% endblock %}
+{% block header %}
+<div class="brand">
+    <h1>Bienvenu</h1>
+</div>
+{% endblock %}
+{% block body %}  
+</br></br>
+<div class="row row-cols-1 row-cols-md-3 ">
+    {%for factures in facture%}
+        <div class="col mb-4 mb-6 ">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Votre formation en {{factures.Matiere.NomMat}}</h5>
+                    <form method="POST" action="{{path("etudiant_app",{id:factures.Matiere.Id})}}" style="display:inline-block">
+                        <input type="hidden" name="_token" value="{{csrf_token('matiere' ~ factures.Matiere.Id)}}">
+                        <input type="hidden" name="_method" value="matiere">
+                        <button class="btn btn-sm btn-outline-danger">{{factures.Matiere.NomMat}}</button>
+                    </form>
+               </div>
+            </div>
+        </div>
+    {% endfor %}
+  </div>
+{% endblock %}

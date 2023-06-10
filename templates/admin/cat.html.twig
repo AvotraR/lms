@@ -1,0 +1,18 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Nouvelle categorie{% endblock %}
+
+{% block body %}
+{{form_start(formCat)}}
+<div class="form-row">
+    <div class="form-group col-md-6">
+    <label>Nouveau categorie:</label>
+    {{form_widget(formCat.NomCat,{'attr':{'class':"form-control"}}) }}
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">
+        publier
+</button>
+{{form_end(formCat)}}
+
+{% endblock %}

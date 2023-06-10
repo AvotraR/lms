@@ -1,0 +1,36 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}Listes des formations{% endblock %}
+
+{% block body %}
+<div class="table-new d-flex">
+    <div class="table-new-payement">
+        <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Enseigner Par:</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for Matiere in Matieres%}
+                            <tr>
+                                <th scope="row">{{Matiere.Id}}</th>
+                                <td>{{Matiere.NomMat}}</td>
+                                <td>{{Matiere.PrixMat}}</td>
+                                <td>{{Matiere.ImgMat}}</td>
+                                <td>{{Matiere.DetailMat}}</td>
+                                <td>{{Matiere.Enseigner.Nom}}{{Matiere.Enseigner.Prenom}}</td>
+                                <td><a href="{{path('Modifier_produit',{'id': Matiere.Id})}}">Modifier</a></td>
+                                
+                            </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+{% endblock %}
