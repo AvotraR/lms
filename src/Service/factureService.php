@@ -4,7 +4,7 @@ namespace App\Service;
 use App\Entity\User;
 use App\Entity\Facture;
 use Doctrine\ORM\EntityManagerInterface;
-class factureService{
+class FactureService{
     private $manager;
 
     public function __construct(EntityManagerInterface $manager){
