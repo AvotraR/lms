@@ -41,8 +41,6 @@ class Matiere
     private ?Categorie $categorie = null;
 
 
-   
-
     #[ORM\ManyToOne(inversedBy: 'matieres')]
     private ?User $Enseigner = null;
 
