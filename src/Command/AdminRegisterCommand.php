@@ -21,6 +21,7 @@ class AdminRegisterCommand extends Command{
     protected static $defaultName = 'lms:create:admin';
 
     public function __construct(EntityManagerInterface $manager, UserPasswordHasherInterface $encoder){
+
         $this->manager = $manager;
         $this->encoder = $encoder;
         parent::__construct();
@@ -31,8 +32,10 @@ class AdminRegisterCommand extends Command{
     }
 
     public function execute(InputInterface $input,OutputInterface $output){
+
         $style = new SymfonyStyle($input, $output);
         $helper = $this->getHelper('question');
+        
         $nom = $helper->ask($input, $output, new Question('Nom : '));
         $prenom = $helper->ask($input, $output, new Question('Prenom : '));
         $adresse = $helper->ask($input, $output, new Question('Adresse : '));
